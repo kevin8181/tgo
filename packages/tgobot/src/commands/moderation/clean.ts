@@ -1,10 +1,13 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
-import { PermissionFlagsBits, ChannelType } from "discord.js";
-import bulkDelete from "../../lib/moderation/actions/tools/bulkDelete.js";
+import { PermissionFlagsBits, ChannelType } from 'discord.js';
+import bulkDelete from '../../lib/moderation/actions/tools/bulkDelete.js';
 
 export class CleanCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
@@ -12,12 +15,12 @@ export class CleanCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) => {
 			builder
-				.setName("clean")
-				.setDescription("Delete messages in bulk")
+				.setName('clean')
+				.setDescription('Delete messages in bulk')
 				.addChannelOption((option) =>
 					option
-						.setName("channel")
-						.setDescription("Channel to clean")
+						.setName('channel')
+						.setDescription('Channel to clean')
 						.setRequired(true)
 						.addChannelTypes(
 							ChannelType.GuildText,
@@ -25,33 +28,35 @@ export class CleanCommand extends Command {
 							ChannelType.GuildStageVoice,
 							ChannelType.AnnouncementThread,
 							ChannelType.PublicThread,
-							ChannelType.GuildVoice
-						)
+							ChannelType.GuildVoice,
+						),
 				)
 				.addIntegerOption((option) =>
 					option
-						.setName("number")
+						.setName('number')
 						.setDescription(
-							"The number of recent messages to delete in the channel. Maximum of 100."
+							'The number of recent messages to delete in the channel. Maximum of 100.',
 						)
-						.setRequired(true)
+						.setRequired(true),
 				)
 				.addStringOption((option) =>
 					option
-						.setName("reason")
-						.setDescription("Reason for the clean")
-						.setRequired(true)
+						.setName('reason')
+						.setDescription('Reason for the clean')
+						.setRequired(true),
 				)
-				.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages);
+				.setDefaultMemberPermissions(
+					PermissionFlagsBits.ManageMessages,
+				);
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
 		interaction.reply(
 			await bulkDelete({
-				targetChannel: interaction.options.getChannel("channel", true, [
+				targetChannel: interaction.options.getChannel('channel', true, [
 					ChannelType.GuildText,
 					ChannelType.GuildAnnouncement,
 					ChannelType.GuildStageVoice,
@@ -59,10 +64,10 @@ export class CleanCommand extends Command {
 					ChannelType.PublicThread,
 					ChannelType.GuildVoice,
 				]),
-				reason: interaction.options.getString("reason", true),
+				reason: interaction.options.getString('reason', true),
 				author: interaction.user,
-				number: interaction.options.getInteger("number", true),
-			})
+				number: interaction.options.getInteger('number', true),
+			}),
 		);
 	}
 }

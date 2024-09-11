@@ -1,11 +1,11 @@
-import { Events, Listener } from "@sapphire/framework";
-import { EmbedBuilder, GuildMember } from "discord.js";
-import { CHANNEL_TOWN_HALL } from "../../lib/discord/loadDiscordObjects.js";
+import { Events, Listener } from '@sapphire/framework';
+import { EmbedBuilder, GuildMember } from 'discord.js';
+import { CHANNEL_TOWN_HALL } from '../../lib/discord/loadDiscordObjects.js';
 
 export class ReadyListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -21,21 +21,23 @@ export class ReadyListener extends Listener {
 			).send({
 				embeds: [
 					new EmbedBuilder()
-						.setTitle("<:boost:1256023381690814536> New Server Boost")
+						.setTitle(
+							'<:boost:1256023381690814536> New Server Boost',
+						)
 						.setThumbnail(newMember.displayAvatarURL())
 						.setDescription(
 							`
 							${newMember} just boosted the server!
 							Boosters get perks like a special color, role icon, hoisted sidebar position, external emoji/stickers/sounds, and access to the </ask:1191037845574529086> AI command!
-						`.replaceAll("	", "")
+						`.replaceAll('	', ''),
 						)
-						.setColor("#ff8950"),
+						.setColor('#ff8950'),
 				],
 				content: newMember.toString(),
 			});
 
 			await message.crosspost();
-			await message.react("🔥");
+			await message.react('🔥');
 		}
 	}
 }

@@ -1,6 +1,6 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder } from 'discord.js';
 import {
 	convertGrade,
 	Ewbank,
@@ -12,7 +12,7 @@ import {
 	WI,
 	AI,
 	Aid,
-} from "@openbeta/sandbag";
+} from '@openbeta/sandbag';
 const gradeScales = [
 	French,
 	YosemiteDecimal,
@@ -26,7 +26,10 @@ const gradeScales = [
 ];
 
 export class GradesCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
@@ -34,20 +37,20 @@ export class GradesCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) => {
 			builder
-				.setName("grades")
+				.setName('grades')
 				.setDescription(
-					"Displays info about a climbing grade and converts it to other scales."
+					'Displays info about a climbing grade and converts it to other scales.',
 				)
 				.addStringOption((option) =>
 					option
-						.setName("grade")
-						.setDescription("The grade to look up.")
-						.setRequired(true)
+						.setName('grade')
+						.setDescription('The grade to look up.')
+						.setRequired(true),
 				)
 				.addStringOption((option) =>
 					option
-						.setName("scale")
-						.setDescription("The scale this grade is on")
+						.setName('scale')
+						.setDescription('The scale this grade is on')
 						.setRequired(true)
 						.addChoices(
 							{
@@ -61,37 +64,37 @@ export class GradesCommand extends Command {
 							{ name: WI.displayName, value: WI.name },
 							{ name: AI.displayName, value: AI.name },
 							{ name: Aid.displayName, value: Aid.name },
-							{ name: Saxon.displayName, value: Saxon.name }
-						)
+							{ name: Saxon.displayName, value: Saxon.name },
+						),
 				);
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
-		const input = interaction.options.getString("grade", true);
+		const input = interaction.options.getString('grade', true);
 
 		//find grade scale from input
 		const inputGradeScale = gradeScales.find((e) => {
-			return e.name === interaction.options.getString("scale");
+			return e.name === interaction.options.getString('scale');
 		});
 
-		if (!inputGradeScale) throw ""; //todo
+		if (!inputGradeScale) throw ''; //todo
 
 		//if the grade does not match the selected scale, reject
 		if (!inputGradeScale.isType(input)) {
 			await interaction.reply(
-				"Your input does not match a valid/known climbing grade."
+				'Your input does not match a valid/known climbing grade.',
 			);
 			return;
 		}
 
 		const embed = new EmbedBuilder()
 			.setTitle(`${inputGradeScale.displayName}: ${input}`)
-			.setColor("#137c5a")
+			.setColor('#137c5a')
 			.addFields({
-				name: "Difficulty",
+				name: 'Difficulty',
 				value: inputGradeScale.getGradeBand(input),
 			});
 
@@ -104,7 +107,11 @@ export class GradesCommand extends Command {
 			if (convertType) {
 				embed.addFields({
 					name: `${convertType.displayName} Conversion`,
-					value: convertGrade(input, inputGradeScale.name, convertType.name),
+					value: convertGrade(
+						input,
+						inputGradeScale.name,
+						convertType.name,
+					),
 				});
 			}
 		}

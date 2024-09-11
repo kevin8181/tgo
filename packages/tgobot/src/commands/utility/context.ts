@@ -1,11 +1,14 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
-import { ApplicationCommandType } from "discord.js";
-import OpenAI from "openai";
-import env from "../../lib/util/env.js";
+import { ApplicationCommandType } from 'discord.js';
+import OpenAI from 'openai';
+import env from '../../lib/util/env.js';
 
 export class ContextCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
@@ -13,13 +16,13 @@ export class ContextCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerContextMenuCommand((builder) => {
 			builder
-				.setName("Ask for context")
+				.setName('Ask for context')
 				.setType(ApplicationCommandType.Message);
 		});
 	}
 
 	public override async contextMenuRun(
-		interaction: Command.ContextMenuCommandInteraction
+		interaction: Command.ContextMenuCommandInteraction,
 	) {
 		if (interaction.isMessageContextMenuCommand()) {
 			const message = interaction.targetMessage;
@@ -31,11 +34,11 @@ export class ContextCommand extends Command {
 			});
 
 			const response = await openai.chat.completions.create({
-				model: "gpt-4o-mini",
-				response_format: { type: "json_object" },
+				model: 'gpt-4o-mini',
+				response_format: { type: 'json_object' },
 				messages: [
 					{
-						role: "system",
+						role: 'system',
 						content: `
 							the user is being vague and is likely a beginner to outdoor recreation.
 
@@ -52,10 +55,10 @@ export class ContextCommand extends Command {
 								"sentence": string,
 								"questions": string[]
 							}
-						`.replaceAll("	", ""),
+						`.replaceAll('	', ''),
 					},
 					{
-						role: "user",
+						role: 'user',
 						content: message.content,
 					},
 				],
@@ -74,12 +77,12 @@ export class ContextCommand extends Command {
 				responseObj.sentence,
 				...responseObj.questions.map((q) => `- ${q}`),
 				`\nRequested by ${interaction.user}.`,
-			].join("\n");
+			].join('\n');
 
 			await message.reply({ content: questionsStr, allowedMentions: {} });
 
 			interaction.editReply({
-				content: "Command successful.",
+				content: 'Command successful.',
 			});
 		}
 	}

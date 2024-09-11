@@ -1,49 +1,49 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder } from 'discord.js';
 
 const snippets = [
 	{
-		name: "Rule 1",
+		name: 'Rule 1',
 		content:
-			"Respect the other members of this server. No NSFW content, personal attacks, or bigotry.",
+			'Respect the other members of this server. No NSFW content, personal attacks, or bigotry.',
 	},
 	{
-		name: "Rule 2",
+		name: 'Rule 2',
 		content:
-			"Respect the outdoors. Enjoy nature responsibly and follow the [Leave No Trace](https://lnt.org/why/7-principles/) principles.",
+			'Respect the outdoors. Enjoy nature responsibly and follow the [Leave No Trace](https://lnt.org/why/7-principles/) principles.',
 	},
 	{
-		name: "Rule 3",
+		name: 'Rule 3',
 		content:
 			"Use the correct channel for your topic. Don't spam, troll, or shitpost.",
 	},
 	{
-		name: "Rule 4",
+		name: 'Rule 4',
 		content:
 			"You may only promote your social media, website, surveys, other servers, etc. once you are <@&594761861770117140> or above. Don't promote through DMs.",
 	},
 	{
-		name: "Rule 5",
-		content: "Political or highly controversial topics are not allowed.",
+		name: 'Rule 5',
+		content: 'Political or highly controversial topics are not allowed.',
 	},
 	{
-		name: "Backpacking Checklist",
+		name: 'Backpacking Checklist',
 		content:
-			"https://www.rei.com/learn/expert-advice/backpacking-checklist.html",
+			'https://www.rei.com/learn/expert-advice/backpacking-checklist.html',
 	},
 	{
-		name: "Camping Checklist",
+		name: 'Camping Checklist',
 		content:
-			"https://www.rei.com/learn/expert-advice/family-camping-checklist.html",
+			'https://www.rei.com/learn/expert-advice/family-camping-checklist.html',
 	},
 	{
-		name: "Day-Hiking Checklist",
+		name: 'Day-Hiking Checklist',
 		content:
-			"https://www.rei.com/learn/expert-advice/day-hiking-checklist.html",
+			'https://www.rei.com/learn/expert-advice/day-hiking-checklist.html',
 	},
 	{
-		name: "Ankle Support",
+		name: 'Ankle Support',
 		content: `
 			https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3943374/
 			> These findings provide preliminary evidence suggesting that wearing high-top shoes can, in certain conditions, induce a delayed pre-activation timing and decreased amplitude of evertor muscle activity, and may therefore have a detrimental effect on establishing and maintaining functional ankle joint stability.
@@ -56,7 +56,7 @@ const snippets = [
 		`,
 	},
 	{
-		name: "Weight",
+		name: 'Weight',
 		content: `
 			**Worn weight** is the clothing you wear __all the time__ while hiking.
 			\`\`\`diff
@@ -83,7 +83,7 @@ const snippets = [
 		`,
 	},
 	{
-		name: "Ultralight Cost",
+		name: 'Ultralight Cost',
 		content: `
 			Backpacks
 			\`\`\`
@@ -123,12 +123,12 @@ const snippets = [
 		`,
 	},
 	{
-		name: "VBL",
+		name: 'VBL',
 		content:
-			"https://andrewskurka.com/vapor-barrier-liners-theory-application/",
+			'https://andrewskurka.com/vapor-barrier-liners-theory-application/',
 	},
 	{
-		name: "Layers",
+		name: 'Layers',
 		content: `
 			There are three basic types of layers:
 
@@ -143,7 +143,7 @@ const snippets = [
 		`,
 	},
 	{
-		name: "Torso Length",
+		name: 'Torso Length',
 		content: `
 			Backpacking packs are sized by torso length. Note that this is different from the *capacity* of the pack, i.e. how much gear it can hold, measured in liters.
 
@@ -153,7 +153,7 @@ const snippets = [
 		`,
 	},
 	{
-		name: "Leave No Trace",
+		name: 'Leave No Trace',
 		content: `
 			Leave No Trace is a set of guidelines for how to minimize damage to the environment while spending time outdoors.
 			
@@ -175,7 +175,10 @@ snippets.forEach((snippet, index) => {
 });
 
 export class SnippetCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
@@ -183,48 +186,50 @@ export class SnippetCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) => {
 			builder
-				.setName("snippet")
-				.setDescription("Access snippets stored by the bot.")
+				.setName('snippet')
+				.setDescription('Access snippets stored by the bot.')
 				.addStringOption((option) =>
 					option
-						.setName("snippet")
-						.setDescription("The name of the snippet to run")
+						.setName('snippet')
+						.setDescription('The name of the snippet to run')
 						.setRequired(true)
-						.addChoices(...commandChoices)
+						.addChoices(...commandChoices),
 				)
 
 				.addUserOption((option) =>
 					option
-						.setName("user")
+						.setName('user')
 						.setDescription("Ping this user in the bot's response")
-						.setRequired(false)
+						.setRequired(false),
 				)
 				.addBooleanOption((option) =>
 					option
-						.setName("hidden")
-						.setDescription("Make the bot's response visible only to you")
-						.setRequired(false)
+						.setName('hidden')
+						.setDescription(
+							"Make the bot's response visible only to you",
+						)
+						.setRequired(false),
 				);
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
 		const snippet: { name: string; content: string } =
-			snippets[parseInt(interaction.options.getString("snippet", true))];
+			snippets[parseInt(interaction.options.getString('snippet', true))];
 
-		const taggedUser = interaction.options.getUser("user", false);
+		const taggedUser = interaction.options.getUser('user', false);
 
 		await interaction.reply({
 			embeds: [
 				new EmbedBuilder()
 					.setTitle(snippet.name)
-					.setDescription(snippet.content.replaceAll("	", ""))
-					.setColor("#137c5a"),
+					.setDescription(snippet.content.replaceAll('	', ''))
+					.setColor('#137c5a'),
 			],
-			ephemeral: !!interaction.options.getBoolean("hidden", false),
-			content: `${taggedUser ?? ""}`, // if no tagged user, it will be an empty string
+			ephemeral: !!interaction.options.getBoolean('hidden', false),
+			content: `${taggedUser ?? ''}`, // if no tagged user, it will be an empty string
 		});
 	}
 }

@@ -1,14 +1,14 @@
-import { Events, Listener } from "@sapphire/framework";
+import { Events, Listener } from '@sapphire/framework';
 
-import { AuditLogEvent, Guild, GuildAuditLogsEntry } from "discord.js";
-import { container } from "@sapphire/framework";
-import ban from "../../lib/moderation/actions/users/ban.js";
-import { GUILD } from "../../lib/discord/loadDiscordObjects.js";
+import { AuditLogEvent, Guild, GuildAuditLogsEntry } from 'discord.js';
+import { container } from '@sapphire/framework';
+import ban from '../../lib/moderation/actions/users/ban.js';
+import { GUILD } from '../../lib/discord/loadDiscordObjects.js';
 
 export class BanListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,

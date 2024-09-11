@@ -1,12 +1,12 @@
-import { Events, Listener } from "@sapphire/framework";
-import { EmbedBuilder, ThreadChannel } from "discord.js";
-import { CHANNEL_MEETUPS } from "../../lib/discord/loadDiscordObjects.js";
-import { sleep } from "@sapphire/utilities";
+import { Events, Listener } from '@sapphire/framework';
+import { EmbedBuilder, ThreadChannel } from 'discord.js';
+import { CHANNEL_MEETUPS } from '../../lib/discord/loadDiscordObjects.js';
+import { sleep } from '@sapphire/utilities';
 
 export class MeetupsAutoMessageListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -23,8 +23,8 @@ export class MeetupsAutoMessageListener extends Listener {
 		await sleep(6000);
 
 		const embed = new EmbedBuilder()
-			.setTitle("Meetups Channel")
-			.setColor("#137c5a")
+			.setTitle('Meetups Channel')
+			.setColor('#137c5a')
 			.setDescription(
 				`Thanks for posting! Please review the guidelines below.
 
@@ -37,7 +37,7 @@ export class MeetupsAutoMessageListener extends Listener {
 				- Your experience level
 				- A date or range of dates
 				- Apply the appropriate tags for region and activity type
-			`.replaceAll("	", "")
+			`.replaceAll('	', ''),
 			);
 
 		thread.send({ embeds: [embed], content: member.user!.toString() });

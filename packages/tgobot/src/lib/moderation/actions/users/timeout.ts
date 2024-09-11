@@ -1,10 +1,10 @@
-import { User } from "discord.js";
-import env from "../../../util/env.js";
-import { container } from "@sapphire/framework";
-import { Emoji } from "../../../util/emoji.js";
+import { User } from 'discord.js';
+import env from '../../../util/env.js';
+import { container } from '@sapphire/framework';
+import { Emoji } from '../../../util/emoji.js';
 
-import { modUserLogEmbed } from "../../modLog.js";
-import humanizeDuration from "humanize-duration";
+import { modUserLogEmbed } from '../../modLog.js';
+import humanizeDuration from 'humanize-duration';
 
 export default async function timeout({
 	targetUser,

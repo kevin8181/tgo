@@ -1,6 +1,6 @@
-import env from "../util/env.js";
-import { container } from "@sapphire/framework";
-import { Channel, ChannelType, Role } from "discord.js";
+import env from '../util/env.js';
+import { container } from '@sapphire/framework';
+import { Channel, ChannelType, Role } from 'discord.js';
 
 export const GUILD = async () =>
 	await container.client.guilds.fetch(env.GUILD_ID);
@@ -9,7 +9,7 @@ export const GUILD = async () =>
 async function fetchRole(id: string) {
 	const role = (await GUILD()).roles.fetch(id);
 	if (role === null) {
-		throw new Error("Role not found");
+		throw new Error('Role not found');
 	}
 	return role as Promise<Role>;
 }
@@ -21,7 +21,7 @@ export const ROLE_INTRODUCED = async () =>
 // CHANNELS //
 async function fetchChannel<T extends ChannelType>(
 	id: string,
-	type: T
+	type: T,
 ): Promise<Channel & { type: T }> {
 	const channel = await container.client.channels.fetch(id);
 	if (!channel) throw new Error(`Channel ${id} not found`);
@@ -33,7 +33,7 @@ async function fetchChannel<T extends ChannelType>(
 export const CHANNEL_INTRODUCTIONS = async () =>
 	await fetchChannel<ChannelType.GuildText>(
 		env.CHANNEL_INTRODUCTIONS_ID,
-		ChannelType.GuildText
+		ChannelType.GuildText,
 	);
 export const CHANNEL_ALERT = async () =>
 	await fetchChannel(env.CHANNEL_ALERT_ID, ChannelType.GuildText);

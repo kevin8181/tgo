@@ -1,7 +1,7 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 dotenv.config();
 
-import { cleanEnv, str, url } from "envalid";
+import { cleanEnv, str, url } from 'envalid';
 
 const env = cleanEnv(process.env, {
 	TOKEN: str(),
@@ -23,7 +23,7 @@ const env = cleanEnv(process.env, {
 	CHANNEL_PHOTOS_ID: str(),
 	CHANNEL_TRIP_REPORTS_ID: str(),
 	CHANNEL_TOWN_HALL_ID: str(),
-	
+
 	CHANNEL_NATURE_ID: str(),
 	CHANNEL_CLIMBING_ID: str(),
 	CHANNEL_BIKING_ID: str(),
@@ -32,7 +32,6 @@ const env = cleanEnv(process.env, {
 	CHANNEL_HIKING_ID: str(),
 	CHANNEL_ON_THE_WATER_ID: str(),
 	CHANNEL_WINTER_SPORTS_ID: str(),
-
 });
 export default env;
 

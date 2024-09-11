@@ -1,17 +1,17 @@
-import { Events, Listener } from "@sapphire/framework";
+import { Events, Listener } from '@sapphire/framework';
 
 import {
 	CHANNEL_PHOTOS,
 	CHANNEL_TRIP_REPORTS,
-} from "../../lib/discord/loadDiscordObjects.js";
-import getDuration from "../../lib/util/getDuration.js";
-import { ThreadChannel } from "discord.js";
-import { sleep } from "@sapphire/utilities";
+} from '../../lib/discord/loadDiscordObjects.js';
+import getDuration from '../../lib/util/getDuration.js';
+import { ThreadChannel } from 'discord.js';
+import { sleep } from '@sapphire/utilities';
 
 export class ReadyListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -25,7 +25,7 @@ export class ReadyListener extends Listener {
 		await sleep(getDuration.seconds(6)); //bot crashes if it tries before the images are done uploading
 		const post = await thread.fetchStarterMessage();
 
-		await post?.react("🫘");
+		await post?.react('🫘');
 
 		if (post?.attachments.size === 0) {
 			await post.reply(`
@@ -50,7 +50,7 @@ export class ReadyListener extends Listener {
 			**For everyone**:
 				- This thread is for discussion of the photos shared above, not for general chatting.
 				- React to this post with 🫘 to upvote it! Each week, the post with the most beans is crowned "Photo of the Week".
-			`.replaceAll("	", "")
+			`.replaceAll('	', ''),
 		);
 	}
 }

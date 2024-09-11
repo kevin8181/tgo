@@ -1,14 +1,14 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
 import {
 	PermissionFlagsBits,
 	APIApplicationCommandOptionChoice,
-} from "discord.js";
+} from 'discord.js';
 import {
 	InfractionType,
 	infraction,
 	infractionHandlers,
-} from "../../lib/moderation/infractions.js";
+} from '../../lib/moderation/infractions.js';
 
 //define the list of infractions to be used in the command. generate the string options.
 const infractionTypesInCommand = [
@@ -30,7 +30,10 @@ for (const key of infractionTypesInCommand) {
 }
 
 export class InfractionCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
@@ -38,37 +41,39 @@ export class InfractionCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) => {
 			builder
-				.setName("infraction")
-				.setDescription("Record a user infraction.")
+				.setName('infraction')
+				.setDescription('Record a user infraction.')
 				.addUserOption((option) =>
 					option
-						.setName("user")
-						.setDescription("The user who committed the infraction")
-						.setRequired(true)
+						.setName('user')
+						.setDescription('The user who committed the infraction')
+						.setRequired(true),
 				)
 				.addStringOption((option) =>
 					option
-						.setName("type")
-						.setDescription("The type of infraction")
+						.setName('type')
+						.setDescription('The type of infraction')
 						.setRequired(true)
-						.addChoices(...infractionOptions)
+						.addChoices(...infractionOptions),
 				)
 				.addStringOption((option) =>
 					option
-						.setName("comments")
-						.setDescription("Any additional comment to log")
+						.setName('comments')
+						.setDescription('Any additional comment to log'),
 				)
 				.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers);
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
 		//get options
-		const user = interaction.options.getUser("user", true);
-		const infractionKey = parseInt(interaction.options.getString("type", true));
-		const comment = interaction.options.getString("comments");
+		const user = interaction.options.getUser('user', true);
+		const infractionKey = parseInt(
+			interaction.options.getString('type', true),
+		);
+		const comment = interaction.options.getString('comments');
 
 		//execute
 		const response = await infraction({

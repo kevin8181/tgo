@@ -1,12 +1,12 @@
-import { Events, Listener } from "@sapphire/framework";
-import { EmbedBuilder, ThreadChannel } from "discord.js";
-import { CHANNEL_TRIP_REPORTS } from "../../lib/discord/loadDiscordObjects.js";
-import { sleep } from "@sapphire/utilities";
+import { Events, Listener } from '@sapphire/framework';
+import { EmbedBuilder, ThreadChannel } from 'discord.js';
+import { CHANNEL_TRIP_REPORTS } from '../../lib/discord/loadDiscordObjects.js';
+import { sleep } from '@sapphire/utilities';
 
 export class MeetupsAutoMessageListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -25,8 +25,8 @@ export class MeetupsAutoMessageListener extends Listener {
 		thread.send({
 			embeds: [
 				new EmbedBuilder()
-					.setTitle("Trips Channel")
-					.setColor("#137c5a")
+					.setTitle('Trips Channel')
+					.setColor('#137c5a')
 					.setDescription(
 						`Use this thread to post your trip report or send updates while on the trail!
 
@@ -43,13 +43,13 @@ export class MeetupsAutoMessageListener extends Listener {
 						Once you've written your report, add one or more tags to describe the type of activity.
 
 						For more info, see here: https://www.reddit.com/r/Ultralight/comments/hmiwh0/meta_how_to_write_a_trip_report/
-			`.replaceAll("	", "")
+			`.replaceAll('	', ''),
 					),
 			],
 			content: member.user!.toString(),
 		});
 
 		const post = await thread.fetchStarterMessage();
-		await post?.react("🫘");
+		await post?.react('🫘');
 	}
 }

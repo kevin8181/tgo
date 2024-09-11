@@ -1,6 +1,6 @@
-import { Events, Listener } from "@sapphire/framework";
-import env from "../../lib/util/env.js";
-import OpenAI from "openai";
+import { Events, Listener } from '@sapphire/framework';
+import env from '../../lib/util/env.js';
+import OpenAI from 'openai';
 import {
 	CHANNEL_ALPINE,
 	CHANNEL_BIKING,
@@ -14,13 +14,13 @@ import {
 	CHANNEL_TRIP_REPORTS,
 	CHANNEL_WINTER_SPORTS,
 	ROLE_INTRODUCED,
-} from "../../lib/discord/loadDiscordObjects.js";
-import { Message } from "discord.js";
+} from '../../lib/discord/loadDiscordObjects.js';
+import { Message } from 'discord.js';
 
 export class IntroductionsAutoMessageListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -38,7 +38,7 @@ export class IntroductionsAutoMessageListener extends Listener {
 			return;
 		}
 
-		message.react("👋");
+		message.react('👋');
 		message.member?.roles.add(await ROLE_INTRODUCED());
 
 		const openai = new OpenAI({
@@ -52,11 +52,11 @@ export class IntroductionsAutoMessageListener extends Listener {
 		thread.sendTyping();
 
 		const response = await openai.chat.completions.create({
-			model: "gpt-4o-mini",
+			model: 'gpt-4o-mini',
 			temperature: 1.4,
 			messages: [
 				{
-					role: "system",
+					role: 'system',
 					content: `
 						A user is introducing theirself to our Discord community about the outdoors.
 						Respond with a short paragraph welcoming them. Personalize the response based on what they said in their introduction.
@@ -78,7 +78,7 @@ export class IntroductionsAutoMessageListener extends Listener {
 					`,
 				},
 				{
-					role: "user",
+					role: 'user',
 					content: message.content,
 				},
 			],

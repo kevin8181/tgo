@@ -1,13 +1,13 @@
-import { Listener, Events } from "@sapphire/framework";
-import { AuditLogEvent, Guild, GuildAuditLogsEntry } from "discord.js";
-import { container } from "@sapphire/framework";
-import { GUILD } from "../../lib/discord/loadDiscordObjects.js";
-import kick from "../../lib/moderation/actions/users/kick.js";
+import { Listener, Events } from '@sapphire/framework';
+import { AuditLogEvent, Guild, GuildAuditLogsEntry } from 'discord.js';
+import { container } from '@sapphire/framework';
+import { GUILD } from '../../lib/discord/loadDiscordObjects.js';
+import kick from '../../lib/moderation/actions/users/kick.js';
 
 export class KickListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -20,7 +20,7 @@ export class KickListener extends Listener {
 		if (auditLog.action !== AuditLogEvent.MemberKick) return;
 
 		//if not from main guild, ignore
-		if (guild !== await GUILD()) return;
+		if (guild !== (await GUILD())) return;
 
 		//get target
 		if (!auditLog.targetId) return;

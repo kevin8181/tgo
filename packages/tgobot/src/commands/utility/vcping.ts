@@ -1,10 +1,10 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
-import { ChannelType } from "discord.js";
-import { ROLE_VCPING } from "../../lib/discord/loadDiscordObjects.js";
-import { Emoji } from "../../lib/util/emoji.js";
-import humanizeDuration from "humanize-duration";
-import duration from "../../lib/util/getDuration.js";
+import { ChannelType } from 'discord.js';
+import { ROLE_VCPING } from '../../lib/discord/loadDiscordObjects.js';
+import { Emoji } from '../../lib/util/emoji.js';
+import humanizeDuration from 'humanize-duration';
+import duration from '../../lib/util/getDuration.js';
 
 const MIN_CONNECTED_USERS = 3;
 const COOLDOWN = duration.hours(6);
@@ -12,7 +12,10 @@ const COOLDOWN = duration.hours(6);
 let vcPingCooldown: boolean = false;
 
 export class VcPingCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
@@ -20,22 +23,22 @@ export class VcPingCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) => {
 			builder
-				.setName("vcping")
-				.setDescription("Notifies people that a vc is happening.")
+				.setName('vcping')
+				.setDescription('Notifies people that a vc is happening.')
 				.addChannelOption((option) =>
 					option
-						.setName("channel")
-						.setDescription("Channel where the VC is happening.")
+						.setName('channel')
+						.setDescription('Channel where the VC is happening.')
 						.setRequired(true)
-						.addChannelTypes(ChannelType.GuildVoice)
+						.addChannelTypes(ChannelType.GuildVoice),
 				);
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
-		const channel = interaction.options.getChannel("channel", true, [
+		const channel = interaction.options.getChannel('channel', true, [
 			ChannelType.GuildVoice,
 		]);
 		const connected = channel.members.toJSON().length;
@@ -45,15 +48,15 @@ export class VcPingCommand extends Command {
 				`${
 					Emoji.False
 				} This command is on a cooldown. The bot will only ping once every ${humanizeDuration(
-					COOLDOWN
-				)}.`
+					COOLDOWN,
+				)}.`,
 			);
 			return;
 		}
 
 		if (connected < MIN_CONNECTED_USERS) {
 			await interaction.reply(
-				`${Emoji.False} There are ${connected} people in ${channel}. There must be at least ${MIN_CONNECTED_USERS} to send a VC ping.`
+				`${Emoji.False} There are ${connected} people in ${channel}. There must be at least ${MIN_CONNECTED_USERS} to send a VC ping.`,
 			);
 			return;
 		}
@@ -64,7 +67,7 @@ export class VcPingCommand extends Command {
 		}, COOLDOWN);
 
 		await interaction.reply(
-			`${Emoji.Call} ${ROLE_VCPING}, there are ${connected} people in ${channel}!`
+			`${Emoji.Call} ${ROLE_VCPING}, there are ${connected} people in ${channel}!`,
 		);
 	}
 }

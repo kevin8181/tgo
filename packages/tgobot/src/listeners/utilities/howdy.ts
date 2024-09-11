@@ -1,10 +1,10 @@
-import { Events, Listener } from "@sapphire/framework";
-import { Message } from "discord.js";
+import { Events, Listener } from '@sapphire/framework';
+import { Message } from 'discord.js';
 
 export class HowdyListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -17,8 +17,8 @@ export class HowdyListener extends Listener {
 
 		if (
 			message.content.toLowerCase().match(/howdy/) ||
-			message.content === "🤠"
+			message.content === '🤠'
 		)
-			message.react("🤠");
+			message.react('🤠');
 	}
 }

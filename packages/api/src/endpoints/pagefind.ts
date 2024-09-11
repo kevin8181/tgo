@@ -1,21 +1,21 @@
-import { Router } from "express";
+import { Router } from 'express';
 const router = Router();
 
-import env from "../util/env.js";
-const scriptUrl = env.GUIDE_BASE_URL + "/pagefind/pagefind.js";
+import env from '../util/env.js';
+const scriptUrl = env.GUIDE_BASE_URL + '/pagefind/pagefind.js';
 
 //make it work on node
 Object.assign(globalThis, {
 	window: {
 		location: {
-			origin: "",
+			origin: '',
 		},
 	},
 	document: {
 		querySelector: () => {
 			return {
 				getAttribute: () => {
-					return "en";
+					return 'en';
 				},
 			};
 		},
@@ -27,7 +27,7 @@ Object.assign(globalThis, {
 
 //load the pagefind script
 const response = await fetch(scriptUrl);
-let string = "";
+let string = '';
 new Uint8Array(await response.arrayBuffer()).forEach((byte) => {
 	string += String.fromCharCode(byte);
 });
@@ -37,13 +37,13 @@ const pagefind = await import(moduleUrl);
 
 //initialize pagefind
 pagefind.options({
-	basePath: env.GUIDE_BASE_URL + "/pagefind",
+	basePath: env.GUIDE_BASE_URL + '/pagefind',
 });
 
-router.get("/", async (req, res) => {
-	const query = req.query["q"];
+router.get('/', async (req, res) => {
+	const query = req.query['q'];
 
-	if (typeof query !== "string") {
+	if (typeof query !== 'string') {
 		return res.sendStatus(400);
 	}
 
@@ -61,7 +61,7 @@ async function search(query: string) {
 	const processedResults = await Promise.all(
 		results.results.map(async (result: any) => {
 			return await result.data();
-		})
+		}),
 	);
 
 	return processedResults;

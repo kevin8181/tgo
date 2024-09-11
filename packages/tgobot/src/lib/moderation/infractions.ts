@@ -1,8 +1,8 @@
-import { User, inlineCode } from "discord.js";
-import timeout from "./actions/users/timeout.js";
-import ban from "./actions/users/ban.js";
-import { Emoji } from "../util/emoji.js";
-import getDuration from "../util/getDuration.js";
+import { User, inlineCode } from 'discord.js';
+import timeout from './actions/users/timeout.js';
+import ban from './actions/users/ban.js';
+import { Emoji } from '../util/emoji.js';
+import getDuration from '../util/getDuration.js';
 
 export enum InfractionType {
 	BadFaith,
@@ -29,18 +29,18 @@ export async function infraction({
 	if (user === author) {
 		return {
 			infractionString: `${Emoji.False} You can't give yourself an infraction!`,
-			actionResultsString: "",
+			actionResultsString: '',
 		};
 	}
 
 	//combine infraction string and mod comment to create reason
 	const reason = `${infractionHandlers[type].string}${
-		comment ? ". Comment: " + comment : ""
+		comment ? '. Comment: ' + comment : ''
 	}.`;
 
 	const infractionString = `${Emoji.True} Logged infraction ${inlineCode(
-		infractionHandlers[type].string
-	)} against ${user}${comment ? " with comment " + inlineCode(comment) : ""}.`;
+		infractionHandlers[type].string,
+	)} against ${user}${comment ? ' with comment ' + inlineCode(comment) : ''}.`;
 
 	//execute the chosen infraction type module
 	const actionResultsString = await infractionHandlers[type].execute({
@@ -57,7 +57,7 @@ export async function infraction({
 
 export const infractionHandlers = {
 	[InfractionType.BadFaith]: {
-		string: "Bad-Faith User",
+		string: 'Bad-Faith User',
 		execute: async ({ user, author, reason }) => {
 			return await ban({
 				targetUser: user,
@@ -69,7 +69,7 @@ export const infractionHandlers = {
 		},
 	},
 	[InfractionType.Nsfw]: {
-		string: "NSFW Content",
+		string: 'NSFW Content',
 		execute: async ({ user, author, reason }) => {
 			return await timeout({
 				targetUser: user,
@@ -80,7 +80,7 @@ export const infractionHandlers = {
 		},
 	},
 	[InfractionType.PersonalAttacks]: {
-		string: "Personal Attacks",
+		string: 'Personal Attacks',
 		execute: async ({ user, author, reason }) => {
 			return await timeout({
 				targetUser: user,
@@ -91,7 +91,7 @@ export const infractionHandlers = {
 		},
 	},
 	[InfractionType.BigotrySlurs]: {
-		string: "Bigotry/Slurs",
+		string: 'Bigotry/Slurs',
 		execute: async ({ user, author, reason }) => {
 			return await timeout({
 				targetUser: user,
@@ -102,7 +102,7 @@ export const infractionHandlers = {
 		},
 	},
 	[InfractionType.Lnt]: {
-		string: "Anti-LNT Practices",
+		string: 'Anti-LNT Practices',
 		execute: async ({ user, author, reason }) => {
 			return await timeout({
 				targetUser: user,
@@ -113,7 +113,7 @@ export const infractionHandlers = {
 		},
 	},
 	[InfractionType.TrollingShitposting]: {
-		string: "Trolling/Shitposting",
+		string: 'Trolling/Shitposting',
 		execute: async ({ user, author, reason }) => {
 			return await timeout({
 				targetUser: user,
@@ -124,7 +124,7 @@ export const infractionHandlers = {
 		},
 	},
 	[InfractionType.PoliticalControversial]: {
-		string: "Political/Controversial Topics",
+		string: 'Political/Controversial Topics',
 		execute: async ({ user, author, reason }) => {
 			return await timeout({
 				targetUser: user,
@@ -135,7 +135,7 @@ export const infractionHandlers = {
 		},
 	},
 	[InfractionType.SpammerScammer]: {
-		string: "Spammer/Scammer",
+		string: 'Spammer/Scammer',
 		execute: async ({ user, author, reason }) => {
 			return await ban({
 				targetUser: user,

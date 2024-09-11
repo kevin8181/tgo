@@ -1,25 +1,28 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
-import { EmbedBuilder } from "discord.js";
-import { Emoji } from "../../lib/util/emoji.js";
+import { EmbedBuilder } from 'discord.js';
+import { Emoji } from '../../lib/util/emoji.js';
 
 export class HelpCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
 	}
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) => {
-			builder.setName("help").setDescription("List commands you can use");
+			builder.setName('help').setDescription('List commands you can use');
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
 		const embed = new EmbedBuilder()
-			.setColor("#137c5a")
+			.setColor('#137c5a')
 			.setTitle(`${Emoji.SlashCommand} TGO Command Help`)
 			.setDescription(
 				`
@@ -44,7 +47,7 @@ export class HelpCommand extends Command {
 				</climb:1081349272986988555>: Display info about a climbing route from OpenBeta.
 				</crag:1081476008538030140>: Display info about a crag from OpenBeta.
 				</grades:1165000063303565312>: Display info about a climbing grade and convert to other scales.
-			`.replaceAll("	", "")
+			`.replaceAll('	', ''),
 			);
 		await interaction.reply({ embeds: [embed] });
 	}

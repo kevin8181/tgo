@@ -1,10 +1,10 @@
-import { Events, Listener } from "@sapphire/framework";
-import { Client } from "discord.js";
+import { Events, Listener } from '@sapphire/framework';
+import { Client } from 'discord.js';
 
 export class ReadyListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,
@@ -14,6 +14,6 @@ export class ReadyListener extends Listener {
 	}
 
 	public run(client: Client) {
-		client.logger.info(`Logged in as ${client.user?.displayName}`)
+		client.logger.info(`Logged in as ${client.user?.displayName}`);
 	}
 }

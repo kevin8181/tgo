@@ -1,15 +1,15 @@
-import { Events, Listener } from "@sapphire/framework";
+import { Events, Listener } from '@sapphire/framework';
 
-import { Message } from "discord.js";
+import { Message } from 'discord.js';
 import {
 	CHANNEL_NATURE,
 	CHANNEL_PHOTOS,
-} from "../../lib/discord/loadDiscordObjects.js";
+} from '../../lib/discord/loadDiscordObjects.js';
 
 export class NatureAutoMessageListener extends Listener {
 	public constructor(
 		context: Listener.LoaderContext,
-		options: Listener.Options
+		options: Listener.Options,
 	) {
 		super(context, {
 			...options,

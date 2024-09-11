@@ -1,12 +1,15 @@
-import { Command } from "@sapphire/framework";
+import { Command } from '@sapphire/framework';
 
-import { PermissionFlagsBits } from "discord.js";
-import getDuration from "../../lib/util/getDuration.js";
-import parseDuration from "parse-duration";
-import humanizeDuration from "humanize-duration";
+import { PermissionFlagsBits } from 'discord.js';
+import getDuration from '../../lib/util/getDuration.js';
+import parseDuration from 'parse-duration';
+import humanizeDuration from 'humanize-duration';
 
 export class LockdownCommand extends Command {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	public constructor(
+		context: Command.LoaderContext,
+		options: Command.Options,
+	) {
 		super(context, {
 			...options,
 		});
@@ -14,40 +17,44 @@ export class LockdownCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) => {
 			builder
-				.setName("lockdown")
-				.setDescription("Lock down the server in the event of a raid")
+				.setName('lockdown')
+				.setDescription('Lock down the server in the event of a raid')
 				.addBooleanOption((option) =>
 					option
-						.setName("dms")
-						.setDescription("Whether to disable DMs between users")
-						.setRequired(true)
+						.setName('dms')
+						.setDescription('Whether to disable DMs between users')
+						.setRequired(true),
 				)
 				.addBooleanOption((option) =>
 					option
-						.setName("invites")
-						.setDescription("Whether to disable the server's invite links")
-						.setRequired(true)
+						.setName('invites')
+						.setDescription(
+							"Whether to disable the server's invite links",
+						)
+						.setRequired(true),
 				)
 				.addStringOption((option) =>
 					option
-						.setName("duration")
+						.setName('duration')
 						.setDescription(
-							"Duration of the lockdown. Accepts units and abbreviations."
+							'Duration of the lockdown. Accepts units and abbreviations.',
 						)
-						.setRequired(true)
+						.setRequired(true),
 				)
-				.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages);
+				.setDefaultMemberPermissions(
+					PermissionFlagsBits.ManageMessages,
+				);
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
-		const pauseDms = interaction.options.getBoolean("dms", true);
-		const pauseInvites = interaction.options.getBoolean("invites", true);
+		const pauseDms = interaction.options.getBoolean('dms', true);
+		const pauseInvites = interaction.options.getBoolean('invites', true);
 
 		const duration =
-			parseDuration(interaction.options.getString("duration", true)) ??
+			parseDuration(interaction.options.getString('duration', true)) ??
 			getDuration.hours(2);
 		const timeout = new Date(Date.now() + duration);
 
@@ -58,15 +65,19 @@ export class LockdownCommand extends Command {
 					dms_disabled_until: pauseDms ? timeout : null,
 					invites_disabled_until: pauseInvites ? timeout : null,
 				},
-			}
+			},
 		);
 
 		interaction.reply(
 			`DMs are ${
-				pauseDms ? "disabled for " + humanizeDuration(duration) : "enabled"
+				pauseDms
+					? 'disabled for ' + humanizeDuration(duration)
+					: 'enabled'
 			}. Invites are ${
-				pauseInvites ? "disabled for " + humanizeDuration(duration) : "enabled"
-			}.`
+				pauseInvites
+					? 'disabled for ' + humanizeDuration(duration)
+					: 'enabled'
+			}.`,
 		);
 	}
 }

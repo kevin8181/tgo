@@ -1,5 +1,5 @@
-import { EmbedBuilder, User } from "discord.js";
-import db from "../db/drizzle.js";
+import { EmbedBuilder, User } from 'discord.js';
+import db from '../db/drizzle.js';
 
 export default async function (user: User) {
 	const rows = await db.query.gearLists.findMany({
@@ -7,7 +7,7 @@ export default async function (user: User) {
 	});
 
 	return new EmbedBuilder()
-		.setColor("#137c5a")
+		.setColor('#137c5a')
 		.setTitle(`${user.displayName}'s Gear Lists`)
 		.setThumbnail(user.displayAvatarURL())
 		.addFields(rows.map((row) => ({ name: row.name, value: row.url })));

@@ -2,15 +2,15 @@ import {
 	ApplicationCommandRegistries,
 	RegisterBehavior,
 	SapphireClient,
-} from "@sapphire/framework";
-import { ActivityType, GatewayIntentBits } from "discord.js";
+} from '@sapphire/framework';
+import { ActivityType, GatewayIntentBits } from 'discord.js';
 
-import env from "./lib/util/env.js";
+import env from './lib/util/env.js';
 
 //delete all existing commands and repopulate each time the bot starts
 //https://sapphirejs.dev/docs/Guide/commands/application-commands/application-command-registry/advanced/setting-global-behavior-when-not-identical
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
-	RegisterBehavior.BulkOverwrite
+	RegisterBehavior.BulkOverwrite,
 );
 
 //only register commands in the home guild
@@ -30,13 +30,13 @@ const client = new SapphireClient({
 		activities: [
 			//todo figure out how to set custom status with no activity type
 			{
-				name: "outside",
+				name: 'outside',
 				type: ActivityType.Playing,
 			},
 		],
 	},
 	allowedMentions: {
-		parse: ["users"],
+		parse: ['users'],
 		repliedUser: true,
 	},
 });

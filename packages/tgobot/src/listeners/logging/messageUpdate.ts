@@ -1,8 +1,8 @@
-import { Listener } from "@sapphire/framework";
+import { Listener } from '@sapphire/framework';
 
-import env from "../../lib/util/env.js";
-import { Message, EmbedBuilder } from "discord.js";
-import { CHANNEL_LOG } from "../../lib/discord/loadDiscordObjects.js";
+import env from '../../lib/util/env.js';
+import { Message, EmbedBuilder } from 'discord.js';
+import { CHANNEL_LOG } from '../../lib/discord/loadDiscordObjects.js';
 
 export class MessageUpdateListener extends Listener {
 	public async run(oldMessage: Message, newMessage: Message) {
@@ -12,15 +12,15 @@ export class MessageUpdateListener extends Listener {
 		if (!oldMessage.content || !newMessage.content) return; //if messages don't have content, return
 
 		const embed = new EmbedBuilder()
-			.setColor("#4a78fc")
-			.setTitle("Message Edited")
+			.setColor('#4a78fc')
+			.setTitle('Message Edited')
 			.setURL(newMessage.url)
 			.setDescription(
-				`Message edited by ${newMessage.author} in ${newMessage.channel}.`
+				`Message edited by ${newMessage.author} in ${newMessage.channel}.`,
 			)
 			.setFields(
-				{ name: "Before", value: oldMessage.content },
-				{ name: "After", value: newMessage.content }
+				{ name: 'Before', value: oldMessage.content },
+				{ name: 'After', value: newMessage.content },
 			);
 
 		(await CHANNEL_LOG()).send({ embeds: [embed] });
