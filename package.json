@@ -12,8 +12,12 @@
     "turbo": "^2.1.1",
     "typescript": "^5.4.5"
   },
+  "type": "module",
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
