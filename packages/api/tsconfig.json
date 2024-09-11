@@ -1,28 +1,10 @@
 {
+	"extends": "@repo/config-typescript/base.json",
 	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"moduleResolution": "Node",
+		"outDir": "dist",
 
-		"outDir": "./dist",
-
-		"allowJs": false,
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-
-		"noImplicitReturns": true,
-		"noImplicitOverride": true,
-		"noPropertyAccessFromIndexSignature": true,
-		"noFallthroughCasesInSwitch": true,
-		// "exactOptionalPropertyTypes": true,
-		// "noUncheckedIndexedAccess": true,
-
-		"allowUnreachableCode": false,
-		"allowUnusedLabels": false,
-		"noUnusedLocals": true,
-		"resolveJsonModule": true
-	}
+		"noUnusedParameters": false
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }
