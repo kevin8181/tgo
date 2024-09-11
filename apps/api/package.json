@@ -1,16 +1,15 @@
 {
 	"name": "api",
+	"type": "module",
 	"main": "dist/index.js",
 	"source": "src/index.ts",
 	"scripts": {
 		"start": "node .",
-		"dev": "tsc --watch",
+		"dev": "tsc && node .",
 		"build": "tsc",
 		"checkBrands": "pnpm build && node dist/endpoints/makers/check.js",
 		"preinstall": "npx only-allow pnpm"
 	},
-	"type": "module",
-	"private": true,
 	"devDependencies": {
 		"@types/express": "^4.17.21",
 		"typescript": "^5.5.4",

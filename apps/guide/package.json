@@ -1,10 +1,6 @@
 {
-	"name": "starlight",
+	"name": "guide",
 	"type": "module",
-	"private": true,
-	"homepage": "https://thegreatoutdoors.community/",
-	"repository": "https://github.com/tgoHQ/knowledgebase",
-	"bugs": "https://github.com/tgoHQ/knowledgebase/issues",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro start",

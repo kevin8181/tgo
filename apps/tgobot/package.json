@@ -1,11 +1,11 @@
 {
 	"name": "tgobot",
+	"type": "module",
 	"main": "dist/bot.js",
 	"source": "src/bot.ts",
-	"repository": "https://github.com/tgoHQ/tgobot",
 	"scripts": {
 		"start": "node .",
-		"dev": "tsc --watch",
+		"dev": "tsc && node .",
 		"build": "tsc"
 	},
 	"dependencies": {
@@ -28,6 +28,5 @@
 		"@types/node": "^20.12.12",
 		"dotenv": "^16.4.5",
 		"typescript": "^5.3.3"
-	},
-	"type": "module"
+	}
 }

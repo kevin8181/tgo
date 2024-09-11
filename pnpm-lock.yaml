@@ -13,14 +13,14 @@ importers:
         version: 0.14.1
     devDependencies:
       prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
+        specifier: ^3.3.3
+        version: 3.3.3
       turbo:
         specifier: ^2.1.1
         version: 2.1.1
       typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
+        specifier: ^5.6.2
+        version: 5.6.2
 
   apps/api:
     dependencies:
@@ -51,7 +51,7 @@ importers:
         version: 0.5.3(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))
       '@astrojs/check':
         specifier: ^0.5.10
-        version: 0.5.10(prettier-plugin-astro@0.14.1)(prettier@3.2.5)(typescript@5.6.2)
+        version: 0.5.10(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.2)
       '@astrojs/markdown-remark':
         specifier: ^5.2.0
         version: 5.2.0
@@ -168,153 +168,7 @@ importers:
         specifier: ^5.3.3
         version: 5.6.2
 
-  packages/api:
-    dependencies:
-      dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
-      envalid:
-        specifier: ^8.0.0
-        version: 8.0.0
-      express:
-        specifier: ^4.19.2
-        version: 4.20.0
-    devDependencies:
-      '@repo/config-typescript':
-        specifier: workspace:*
-        version: link:../config-typescript
-      '@types/express':
-        specifier: ^4.17.21
-        version: 4.17.21
-      typescript:
-        specifier: ^5.5.4
-        version: 5.6.2
-
   packages/config-typescript: {}
-
-  packages/guide:
-    dependencies:
-      '@astro-community/astro-embed-youtube':
-        specifier: ^0.5.3
-        version: 0.5.3(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))
-      '@astrojs/check':
-        specifier: ^0.5.10
-        version: 0.5.10(prettier-plugin-astro@0.14.1)(prettier@3.2.5)(typescript@5.6.2)
-      '@astrojs/markdown-remark':
-        specifier: ^5.2.0
-        version: 5.2.0
-      '@astrojs/starlight':
-        specifier: ^0.25.5
-        version: 0.25.5(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))
-      '@astrojs/starlight-tailwind':
-        specifier: ^2.0.3
-        version: 2.0.3(@astrojs/starlight@0.25.5(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2)))(@astrojs/tailwind@5.1.0(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))(tailwindcss@3.4.10))(tailwindcss@3.4.10)
-      '@astrojs/tailwind':
-        specifier: ^5.1.0
-        version: 5.1.0(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))(tailwindcss@3.4.10)
-      '@astrojs/vercel':
-        specifier: ^7.8.0
-        version: 7.8.1(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))
-      '@inox-tools/star-warp':
-        specifier: ^0.1.1
-        version: 0.1.1(@astrojs/starlight@0.25.5(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2)))(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))
-      '@lunariajs/core':
-        specifier: ^0.0.32
-        version: 0.0.32
-      '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
-      '@vite-pwa/assets-generator':
-        specifier: ^0.2.6
-        version: 0.2.6
-      '@vite-pwa/astro':
-        specifier: ^0.3.1
-        version: 0.3.1(@vite-pwa/assets-generator@0.2.6)(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))(vite-plugin-pwa@0.20.5(@vite-pwa/assets-generator@0.2.6)(vite@5.4.3(@types/node@20.16.5)(terser@5.32.0))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0))
-      astro:
-        specifier: ^4.15.3
-        version: 4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2)
-      astro-meta-tags:
-        specifier: ^0.2.2
-        version: 0.2.2(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2))
-      astro-vtbot:
-        specifier: ^1.8.8
-        version: 1.9.2
-      mdast-util-to-string:
-        specifier: ^4.0.0
-        version: 4.0.0
-      reading-time:
-        specifier: ^1.5.0
-        version: 1.5.0
-      sharp:
-        specifier: ^0.32.6
-        version: 0.32.6
-      starlight-image-zoom:
-        specifier: ^0.2.0
-        version: 0.2.0(@astrojs/starlight@0.25.5(astro@4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2)))
-      tailwindcss:
-        specifier: ^3.4.10
-        version: 3.4.10
-      typescript:
-        specifier: ^5.5.4
-        version: 5.6.2
-      workbox-window:
-        specifier: ^7.1.0
-        version: 7.1.0
-
-  packages/tgobot:
-    dependencies:
-      '@openbeta/sandbag':
-        specifier: ^0.0.51
-        version: 0.0.51
-      '@repo/config-typescript':
-        specifier: workspace:^
-        version: link:../config-typescript
-      '@sapphire/framework':
-        specifier: ^5.2.1
-        version: 5.2.1
-      '@sapphire/utilities':
-        specifier: ^3.17.0
-        version: 3.17.0
-      discord.js:
-        specifier: ^14.7.1
-        version: 14.16.1
-      drizzle-kit:
-        specifier: ^0.20.14
-        version: 0.20.18
-      drizzle-orm:
-        specifier: ^0.30.8
-        version: 0.30.10(postgres@3.4.4)
-      envalid:
-        specifier: ^8.0.0
-        version: 8.0.0
-      humanize-duration:
-        specifier: ^3.27.3
-        version: 3.32.1
-      openai:
-        specifier: ^4.23.0
-        version: 4.58.2(zod@3.23.8)
-      parse-duration:
-        specifier: ^1.0.2
-        version: 1.1.0
-      postgres:
-        specifier: ^3.4.4
-        version: 3.4.4
-      puppeteer:
-        specifier: ^22.12.1
-        version: 22.15.0(typescript@5.6.2)
-    devDependencies:
-      '@types/humanize-duration':
-        specifier: ^3.27.4
-        version: 3.27.4
-      '@types/node':
-        specifier: ^20.12.12
-        version: 20.16.5
-      dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
-      typescript:
-        specifier: ^5.3.3
-        version: 5.6.2
 
 packages:
 
@@ -4100,6 +3954,10 @@ packages:
   object-inspect@1.13.1:
     resolution: {integrity: sha512-5qoj1RUiKOMsCCNLV1CBiPYE10sziTsnmNxkAI/rZhiD63CF7IqdFGC/XzjWjpSgLf0LxXX3bDFIh0E18f6UhQ==}
 
+  object-inspect@1.13.2:
+    resolution: {integrity: sha512-IRZSRuzJiynemAXPYtPe5BoI/RESNYR7TYm50MC5Mqbd3Jmw5y790sErYw3V6SryFJD64b74qQQs9wn5Bg/k3g==}
+    engines: {node: '>= 0.4'}
+
   object-keys@1.1.1:
     resolution: {integrity: sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==}
     engines: {node: '>= 0.4'}
@@ -4329,9 +4187,10 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
     engines: {node: '>=14'}
+    hasBin: true
 
   pretty-bytes@5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
@@ -5032,10 +4891,6 @@ packages:
   typescript-auto-import-cache@0.3.3:
     resolution: {integrity: sha512-ojEC7+Ci1ij9eE6hp8Jl9VUNnsEKzztktP5gtYNRMrTmfXVwA1PITYYAkpxCvvupdSYa/Re51B6KMcv1CTZEUA==}
 
-  typescript@5.4.5:
-    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
-    engines: {node: '>=14.17'}
-
   typescript@5.6.2:
     resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
     engines: {node: '>=14.17'}
@@ -5522,9 +5377,9 @@ snapshots:
       astro: 4.15.4(@types/node@20.16.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.6.2)
       lite-youtube-embed: 0.3.3
 
-  '@astrojs/check@0.5.10(prettier-plugin-astro@0.14.1)(prettier@3.2.5)(typescript@5.6.2)':
+  '@astrojs/check@0.5.10(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.2)':
     dependencies:
-      '@astrojs/language-server': 2.14.2(prettier-plugin-astro@0.14.1)(prettier@3.2.5)(typescript@5.6.2)
+      '@astrojs/language-server': 2.14.2(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.2)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -5538,7 +5393,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.1': {}
 
-  '@astrojs/language-server@2.14.2(prettier-plugin-astro@0.14.1)(prettier@3.2.5)(typescript@5.6.2)':
+  '@astrojs/language-server@2.14.2(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.2)':
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/yaml2ts': 0.2.1
@@ -5553,14 +5408,14 @@ snapshots:
       volar-service-css: 0.0.61(@volar/language-service@2.4.4)
       volar-service-emmet: 0.0.61(@volar/language-service@2.4.4)
       volar-service-html: 0.0.61(@volar/language-service@2.4.4)
-      volar-service-prettier: 0.0.61(@volar/language-service@2.4.4)(prettier@3.2.5)
+      volar-service-prettier: 0.0.61(@volar/language-service@2.4.4)(prettier@3.3.3)
       volar-service-typescript: 0.0.61(@volar/language-service@2.4.4)
       volar-service-typescript-twoslash-queries: 0.0.61(@volar/language-service@2.4.4)
       volar-service-yaml: 0.0.61(@volar/language-service@2.4.4)
       vscode-html-languageservice: 5.3.1
       vscode-uri: 3.0.8
     optionalDependencies:
-      prettier: 3.2.5
+      prettier: 3.3.3
       prettier-plugin-astro: 0.14.1
     transitivePeerDependencies:
       - typescript
@@ -8256,7 +8111,7 @@ snapshots:
       is-string: 1.0.7
       is-typed-array: 1.1.13
       is-weakref: 1.0.2
-      object-inspect: 1.13.1
+      object-inspect: 1.13.2
       object-keys: 1.1.1
       object.assign: 4.1.5
       regexp.prototype.flags: 1.5.2
@@ -9952,6 +9807,8 @@ snapshots:
 
   object-inspect@1.13.1: {}
 
+  object-inspect@1.13.2: {}
+
   object-keys@1.1.1: {}
 
   object.assign@4.1.5:
@@ -10201,13 +10058,13 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       '@astrojs/compiler': 2.10.3
-      prettier: 3.2.5
+      prettier: 3.3.3
       sass-formatter: 0.7.9
 
   prettier@2.8.7:
     optional: true
 
-  prettier@3.2.5: {}
+  prettier@3.3.3: {}
 
   pretty-bytes@5.6.0: {}
 
@@ -11158,8 +11015,6 @@ snapshots:
     dependencies:
       semver: 7.6.3
 
-  typescript@5.4.5: {}
-
   typescript@5.6.2: {}
 
   ultramatter@0.0.4: {}
@@ -11346,12 +11201,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.4
 
-  volar-service-prettier@0.0.61(@volar/language-service@2.4.4)(prettier@3.2.5):
+  volar-service-prettier@0.0.61(@volar/language-service@2.4.4)(prettier@3.3.3):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.4
-      prettier: 3.2.5
+      prettier: 3.3.3
 
   volar-service-typescript-twoslash-queries@0.0.61(@volar/language-service@2.4.4):
     dependencies:
