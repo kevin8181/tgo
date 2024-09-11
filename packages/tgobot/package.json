@@ -1,0 +1,32 @@
+{
+	"name": "tgobot",
+	"main": "dist/bot.js",
+	"source": "src/bot.ts",
+	"repository": "https://github.com/tgoHQ/tgobot",
+	"scripts": {
+		"start": "node .",
+		"dev": "tsc && node .",
+		"build": "tsc"
+	},
+	"dependencies": {
+		"@openbeta/sandbag": "^0.0.51",
+		"@sapphire/framework": "^5.2.1",
+		"@sapphire/utilities": "^3.17.0",
+		"discord.js": "^14.7.1",
+		"drizzle-kit": "^0.20.14",
+		"drizzle-orm": "^0.30.8",
+		"envalid": "^8.0.0",
+		"humanize-duration": "^3.27.3",
+		"openai": "^4.23.0",
+		"parse-duration": "^1.0.2",
+		"postgres": "^3.4.4",
+		"puppeteer": "^22.12.1"
+	},
+	"devDependencies": {
+		"@types/humanize-duration": "^3.27.4",
+		"@types/node": "^20.12.12",
+		"dotenv": "^16.4.5",
+		"typescript": "^5.3.3"
+	},
+	"type": "module"
+}
