@@ -1,0 +1,63 @@
+---
+title: Markup Reference
+description: A guide to the styling features and components you can use
+sidebar:
+    order: 1
+---
+
+## Content
+
+The article content is written in MDX, which is an extension of Markdown. It's similar to the formatting you may be familiar with from Discord or Github.
+
+```mdx
+## This is heading level 2
+
+### Heading level 3
+
+**Here's some bold text**
+
+_italic_
+
+~~strikethrough~~
+
+this is some `inline code`
+
+-   a bulleted list
+    -   with sub-bullets
+```
+
+:::tip
+There are lots of other features available for you to use, such as numbered lists, masked links, embedded images, asides (like this "tip" callout), tables, block quotes, and more.
+:::
+
+For a complete list of available markup features, check out the Starlight documentation:
+
+https://starlight.astro.build/guides/authoring-content/
+
+### YouTube
+
+Use the `YouTube` component to embed a YouTube video:
+
+```mdx
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+<YouTube id="https://www.youtube.com/watch?v=Wb3UrJjAac4" />
+```
+
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+<YouTube id="https://www.youtube.com/watch?v=Wb3UrJjAac4" />
+
+### Lighterpack Lists
+
+Use the `Lighterpack` component to embed a [Lighterpack](https://lighterpack.com) gear list. In this example, we're embedding the list `https://lighterpack.com/r/sl6c8y`. The last part of this url, called the "slug", gets passed to the `Lighterpack` component:
+
+```js
+import Lighterpack from '@components/content/Lighterpack.astro';
+
+<Lighterpack slug="sl6c8y" />;
+```
+
+import Lighterpack from '@components/content/Lighterpack.astro';
+
+<Lighterpack slug="sl6c8y" />

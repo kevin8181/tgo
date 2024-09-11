@@ -1,0 +1,50 @@
+---
+title: Creating and Editing Articles
+description: Documentation about the steps for creating and editing articles
+sidebar:
+    label: Editing Articles
+    order: 0
+---
+
+## Article Structure
+
+Articles are written using MDX. Each article is its own `.mdx` file, which contains a metadata section and a content section:
+
+```mdx title="src/content/docs/example.mdx"
+---
+title: Example Article
+description: A demonstration of how articles are structured
+---
+
+This is the content of the example article!
+```
+
+[Metadata](/contribute/content/frontmatter) about the article lives at the top of the file, between two sets of `---` tags. The [content](/contribute/content/markup) of the article goes below the second `---` tag.
+
+## Creating a New Article
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1.  #### Article concept
+
+    First you'll need a concept for your article. See our [list of planned articles](https://docs.google.com/document/d/1TRKIPZgA0pLXjN-34byP6n940qy4x5YIRYE2ZLvFzHM/edit) for ideas.
+
+2.  #### Create the file
+
+    Create a new `.mdx` file in the appropriate folder within `src/content/docs`. The name of the file is the default URL for the page. Files named `index.mdx` will be served on path of the parent folder.
+
+3.  #### Write your metadata
+
+    Check out the [Article Metadata](/contribute/content/frontmatter) guide.
+
+4.  #### Write your content
+
+    See our [Stylistic Standards](/contribute/content/style) [Markup Reference](/contribute/content/markup) for more info.
+
+5.  #### Create a pull request
+
+        If you're new to Git, refer to our [Working with Git](/contribute/git/) guide.
+
+</Steps>

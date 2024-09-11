@@ -1,0 +1,58 @@
+---
+title: Technical Overview
+description: How to work with Git and set up your dev environment
+sidebar:
+    order: -1
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+The files for this project are managed with [Git](https://git-scm.com/), which is a tool for tracking changes and versions of code. Our Git project (or "repository") is hosted by a website called [Github](https://github.com).
+
+## Setting up your Local Environment
+
+To make edits to this project and contribute them, you will need to make a local copy of the project on your own computer.
+
+<Steps>
+
+1.  #### Install Git
+
+    [Make sure you have Git installed](https://github.com/git-guides/install-git#install-git-using-github-desktop). If you're on Linux or Mac, it may be pre-installed for you.
+
+    If not, follow the [installation instructions](https://github.com/git-guides/install-git).
+
+    ###
+
+2.  #### Clone the Project
+
+    Run this command to create a local copy, or "clone", of the project on your computer:
+
+    ```bash
+    git clone https://github.com/tgoHQ/knowledgebase
+    ```
+
+3.  #### Install Node
+
+    This project requires the Node.js runtime in order to run. See the [installation instructions](https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script).
+
+4.  ### Install pnpm
+
+    ```bash
+    npm i -g pnpm
+    ```
+
+5.  #### Set up your Editor
+
+    If you don't already have a preferred code editor, we suggest [VSCode](https://code.visualstudio.com/). This project contains files that will automatically configure some VSCode settings for you and suggest the appropriate plugins needed to give you syntax highlighting and autocompletion.
+
+6.  #### Start it Up!
+
+    Now you're ready to launch the site and start making edits.
+
+    ```bash
+    pnpm dev
+    ```
+
+    This will launch the local development server. Go to [localhost:4321](http://localhost:4321) to see a live copy of the site. It will automatically update as you make changes.
+
+</Steps>

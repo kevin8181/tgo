@@ -1,0 +1,31 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Footer.astro';
+const year = new Date().getFullYear();
+---
+
+<Default {...Astro.props}><slot /></Default>
+
+<hr />
+
+<p>
+	&copy; {year} The Great Outdoors. <a
+		href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+		target="_blank"
+		rel="license noopener noreferrer"
+		style="color: var(--sl-color-text-accent);"
+	>
+		CC BY-NC-SA 4.0
+	</a>
+</p>
+
+<style>
+	p {
+		text-align: center;
+		font-size: var(--sl-text-sm);
+	}
+	hr {
+		border: 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+</style>

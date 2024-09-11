@@ -1,0 +1,34 @@
+---
+title: Extending and Development
+description: How to extend your articles with advanced functionality
+sidebar:
+    label: Extending
+    order: 10
+    badge:
+        text: Advanced
+        variant: caution
+---
+
+This site is built on top of [Astro](https://astro.build/) with [Starlight](https://starlight.astro.build/), and the pages are all written in [MDX](https://mdxjs.com/). That means we have lots of options for extending and adding interactive features to our articles.
+
+## Project Structure
+
+import { FileTree } from '@astrojs/starlight/components';
+
+{/* prettier-ignore */}
+<FileTree>
+    - src/
+        - assets/ //static assets like images go in here
+			- image.png
+        - content/
+    		- docs/ //articles go in here
+				- article.mdx
+		- components/ //components go in here
+			- component.astro
+</FileTree>
+
+## Components
+
+You can create a new component in a `.astro` file, which will automatically be rendered and optimized at build time, and can then be accessed from inside the articles. Components can accept props and even have other components or markdown nested inside them. See the [Astro Components documentation](https://docs.astro.build/basics/astro-components/) for more info.
+
+It is also possible to include components from various frontend frameworks. For performance reasons, this is reserved only for cases when highly interactive features are needed. We want to ship as little JS to the browser as possible and keep our pages lightweight.

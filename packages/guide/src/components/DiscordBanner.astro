@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import imgReference from '@assets/discord-mark-blue.svg';
+
+const response = await fetch(
+	'https://discord.com/api/v9/invites/the-great-outdoors-345621611770282004?with_counts=true'
+);
+const data = await response.json();
+const { approximate_member_count: members } = data;
+
+// todo hook this up to translations
+// https://github.com/withastro/docs/blob/main/src/components/StarlightBanner.astro
+---
+
+<aside class="not-content">
+	<div>
+		<a href="https://discord.gg/the-great-outdoors-345621611770282004">
+			<h2>Join us on Discord</h2>
+		</a>
+		<p>
+			Chat with {members} members <b>→</b>
+		</p>
+	</div>
+	<div style="">
+		<Image src={imgReference} alt="" width={180} />
+	</div>
+</aside>
+
+<style>
+	aside {
+		margin: 1rem 0;
+		position: relative;
+		background-color: var(--sl-color-gray-6);
+		padding: 1rem;
+		border-radius: 0.5rem;
+		display: flex;
+		border: 2px solid #5865f2;
+		box-shadow: var(--sl-shadow-md);
+		overflow-y: hidden;
+		max-width: 235px;
+	}
+	aside a::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+	aside h2 {
+		font-size: var(--sl-text-lg) !important;
+	}
+	aside p {
+		font-size: var(--sl-text-sm) !important;
+		line-height: normal;
+	}
+	aside > div:last-child {
+		display: flex;
+		align-items: center;
+	}
+	aside img {
+		transition: transform 0.2s;
+		width: 5rem;
+		height: auto;
+	}
+
+	aside:hover img {
+		transform: rotate(10deg);
+	}
+</style>
