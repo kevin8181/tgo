@@ -1,0 +1,23 @@
+{
+	"name": "api",
+	"main": "dist/index.js",
+	"source": "src/index.ts",
+	"scripts": {
+		"start": "node .",
+		"dev": "tsc && node .",
+		"build": "tsc",
+		"checkMakers": "tsc && node dist/endpoints/makers/check.js",
+		"preinstall": "npx only-allow pnpm"
+	},
+	"type": "module",
+	"private": true,
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"envalid": "^8.0.0",
+		"express": "^4.19.2"
+	}
+}
