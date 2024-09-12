@@ -7,14 +7,13 @@ settings:
 importers:
 
   .:
-    dependencies:
-      prettier-plugin-astro:
-        specifier: ^0.14.1
-        version: 0.14.1
     devDependencies:
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      prettier-plugin-astro:
+        specifier: ^0.14.1
+        version: 0.14.1
       turbo:
         specifier: ^2.1.1
         version: 2.1.1
