@@ -1,0 +1,8 @@
+[phases.install]
+cmds = ['pnpm --filter api... install']
+
+[phases.build]
+cmds = ['pnpm build --filter=api'] 
+
+[start]
+cmd = 'pnpm start --filter=api' 
