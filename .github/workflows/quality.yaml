@@ -23,6 +23,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
             - name: Install dependencies
-              run: pnpm install
+              run: pnpm install -D -w
             - name: Check formatting with Prettier
               run: pnpm format:check
