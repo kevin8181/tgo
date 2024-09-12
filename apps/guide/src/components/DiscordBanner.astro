@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import imgReference from '@assets/discord-mark-blue.svg';
 
 const response = await fetch(
-	'https://discord.com/api/v9/invites/the-great-outdoors-345621611770282004?with_counts=true'
+	'https://discord.com/api/v9/invites/the-great-outdoors-345621611770282004?with_counts=true',
 );
 const data = await response.json();
 const { approximate_member_count: members } = data;
